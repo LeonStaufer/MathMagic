@@ -1,4 +1,4 @@
-package me.staufer.mathmagic;
+package me.staufer.math_example;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("me.staufer.mathmagic", appContext.getPackageName());
+        assertEquals("me.staufer.math_example", appContext.getPackageName());
     }
 }

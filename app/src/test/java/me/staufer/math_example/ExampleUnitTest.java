@@ -1,4 +1,4 @@
-package me.staufer.mathmagic;
+package me.staufer.math_example;
 
 import org.junit.Test;
 
