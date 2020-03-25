@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="file:///android_asset/katex/katex.min.css"/>
+    <style type="text/css">
+         body {
+             margin : 0;
+             padding : 0;
+             -webkit-touch-callout: none !important;
+             -webkit-user-select: none !important;
+             user-select: none !important;
+         }
+
+         #math {
+              min-height: 2em;
+              line-height: 1.2em;
+         }
+
+         .display {
+              text-align: center;
+          }
+
+         /* TODO fix padding */
+    </style>
+    <script defer src="file:///android_asset/katex/katex.min.js"></script>
+    <script defer src="file:///android_asset/katex/mhchem.min.js"></script>
+    <!-- TODO use copy-tex and a11y? -->
+</head>
+<body>
+<main id="math"></main>
+<script>
+    var body = document.querySelector("body");
+    var math = document.querySelector("#math");
+
+    function decodeHtml(html) {
+        var text = document.createElement("textarea");
+        text.innerHTML = html;
+        return text.value;
+    }
+
+    function init(options) {
+        //TODO handle interactive
+        if (options){
+            if (options.displayMode) math.classList.add("display");
+            if (options.color) body.style.color = options.color;
+            if (options.background) body.style.background = options.background;
+        }
+    }
+
+    function update(tex, options) {
+        katex.render(String.raw`${decodeHtml(tex)}`, math, options);
+    }
+</script>
+</body>
+</html>
