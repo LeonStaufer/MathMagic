@@ -1,2 +1,3 @@
 rootProject.name='Math Magic'
 include ':app'
+include ':mathmagic'
