@@ -10,7 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="10dp"
+        app:color="@color/colorAccent"
+        app:colorBackground="@color/colorPrimaryDark"
+        app:displayMode="true"
+        app:layout_constraintBottom_toBottomOf="@id/mathview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tex="\\int x \\neq x^2 \\\\ \\text{Example in XML}" />
+
+    <me.staufer.mathmagic.MathView
         android:id="@+id/mathview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="10dp"
+        app:displayMode="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

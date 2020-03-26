@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //render TeX once MathView has loaded
                 //backslashes need to be escaped
-                mathView.render("x \\times x = x^2 \\ \\ \\text{Example}");
+                mathView.render("x \\times x = x^2 \\\\ \\text{Example in Java}");
             }
         });
     }
