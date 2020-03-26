@@ -29,14 +29,11 @@
 </head>
 <body>
 <main id="math"></main>
-</body>
-</html>
-
-
 <script>
 	//get options from URL parameters
 	const urlParams = new URLSearchParams(window.location.search);
 	const options = JSON.parse(decodeURIComponent(urlParams.get("options")));
+	const tex = decodeURIComponent(urlParams.get("tex"));
 
 	//define body/math elements
 	const body = document.querySelector("body");
@@ -54,9 +51,8 @@
 
 	/**
 	 * initialize styles based on options
-	 * @param options JSON object
 	 */
-	function init(options) {
+	function init() {
 		if (options) {
 			if (options.displayMode) math.classList.add("display");
 			if (options.color) body.style.color = options.color;
@@ -69,10 +65,18 @@
 	 * @param tex to be rendered
 	 * @param options JSON object
 	 */
-	function update(tex, options) {
+	function update(tex) {
 		katex.render(String.raw`${_decodeHtml(tex)}`, math, options);
 	}
 
 	//initialize with options
-	init(options);
+	init();
+
+	//update tex when window is loaded
+	window.addEventListener("load", function () {
+		console.log(tex);
+		if (tex) update(tex);
+	});
 </script>
+</body>
+</html>

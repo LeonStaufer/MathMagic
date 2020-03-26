@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MathView">
+        <attr name="displayMode" format="boolean" />
+        <attr name="leqno" format="boolean" />
+        <attr name="fleqn" format="boolean" />
+        <attr name="throwOnError" format="boolean" />
+        <attr name="colorError" format="color" />
+        <attr name="color" format="color" />
+        <attr name="colorBackground" format="color" />
+        <attr name="tex" format="string" />
+    </declare-styleable>
+</resources>
