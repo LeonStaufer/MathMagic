@@ -6,10 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <me.staufer.mathmagic.MathView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mathview">
+
+        <me.staufer.mathmagic.MathView
+            android:id="@+id/mathview_interactive"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:color="@android:color/white"
+            app:colorBackground="@color/colorPrimary"
+            app:displayMode="true" />
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter a TeX equation"/>
+
+    </LinearLayout>
+
+    <me.staufer.mathmagic.MathView
+        android:id="@+id/mathview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:displayMode="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <me.staufer.mathmagic.MathView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary"
         app:color="@color/colorAccent"
         app:colorBackground="@color/colorPrimaryDark"
         app:displayMode="true"
@@ -18,16 +53,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tex="\\int x \\neq x^2 \\\\ \\text{Example in XML}" />
-
-    <me.staufer.mathmagic.MathView
-        android:id="@+id/mathview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="10dp"
-        app:displayMode="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
