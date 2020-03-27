@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="file:///android_asset/katex/katex.min.css"/>
     <style type="text/css">
+        document {
+            height: 100%;
+            width: 100%;
+        }
+
         body {
             margin: 0;
             padding: 0;
             -webkit-touch-callout: none !important;
             -webkit-user-select: none !important;
             user-select: none !important;
+            height: 100%;
+            width: 100%;
         }
 
         #math {
@@ -33,7 +40,7 @@
 	//get options from URL parameters
 	const urlParams = new URLSearchParams(window.location.search);
 	const options = JSON.parse(decodeURIComponent(urlParams.get("options")));
-	const tex = decodeURIComponent(urlParams.get("tex"));
+	const tex = urlParams.has("tex") ? decodeURIComponent(urlParams.get("tex")) : null;
 
 	//define body/math elements
 	const body = document.querySelector("body");
@@ -74,7 +81,6 @@
 
 	//update tex when window is loaded
 	window.addEventListener("load", function () {
-		console.log(tex);
 		if (tex) update(tex);
 	});
 </script>
