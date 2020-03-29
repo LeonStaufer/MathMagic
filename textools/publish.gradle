@@ -1,23 +1,20 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-group = "me.staufer"
-version = "1.0.1"
-
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'mathmagic'
+    bintrayName = 'textools'
 
     groupId = 'me.staufer'
-    libraryName = 'mathmagic'
-    artifact = 'mathmagic'
+    libraryName = 'textools'
+    artifact = 'textools'
 
     libraryDescription = 'Android Library to display LaTeX equations'
 
-    siteUrl = 'https://github.com/LeonStaufer/MathMagic'
-    gitUrl = 'https://github.com/LeonStaufer/MathMagic.git'
+    siteUrl = 'https://github.com/LeonStaufer/TeXTools'
+    gitUrl = 'https://github.com/LeonStaufer/TeXTools.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.2'
 
     developerId = 'LeonStaufer'
     developerName = 'Leon Staufer'
@@ -27,6 +24,9 @@ ext {
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     allLicenses = ["Apache-2.0"]
 }
+
+group = groupId
+version = libraryVersion
 
 install {
     repositories.mavenInstaller {
@@ -98,8 +98,8 @@ bintray {
         publish = true
         version {
             name = libraryVersion
-            desc = 'Math Magic 1.0.1'
-            vcsTag = '1.0.1'
+            desc = "TeX Tools $libraryVersion"
+            vcsTag = libraryVersion
         }
     }
 }

@@ -8,7 +8,7 @@ import android.webkit.WebViewClient;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import me.staufer.mathmagic.MathView;
+import me.staufer.textools.MathView;
 
 /**
  * Basic example to show how MathView works
