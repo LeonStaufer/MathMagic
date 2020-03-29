@@ -1,4 +1,4 @@
-package me.staufer.mathmagic;
+package me.staufer.textools;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

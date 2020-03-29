@@ -6,16 +6,16 @@ version = "1.0.1"
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'mathmagic'
+    bintrayName = 'textools'
 
     groupId = 'me.staufer'
-    libraryName = 'mathmagic'
-    artifact = 'mathmagic'
+    libraryName = 'textools'
+    artifact = 'textools'
 
     libraryDescription = 'Android Library to display LaTeX equations'
 
-    siteUrl = 'https://github.com/LeonStaufer/MathMagic'
-    gitUrl = 'https://github.com/LeonStaufer/MathMagic.git'
+    siteUrl = 'https://github.com/LeonStaufer/TeXTools'
+    gitUrl = 'https://github.com/LeonStaufer/TeXTools.git'
 
     libraryVersion = '1.0.1'
 
@@ -98,8 +98,8 @@ bintray {
         publish = true
         version {
             name = libraryVersion
-            desc = 'Math Magic 1.0.1'
-            vcsTag = '1.0.1'
+            desc = "TeX Tools $libraryVersion"
+            vcsTag = libraryVersion
         }
     }
 }
