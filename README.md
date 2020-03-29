@@ -31,7 +31,7 @@
 
 ## About
 
-![Screenshot of the TeX Tools Example App][product-screenshot]
+<img alt="Screenshot of the TeX Tools Example App" src="assets/screenshot.jpg" width="400" />
 
 **TeX Tools** is an Android library for rendering TeX equations. 
 
