@@ -1,11 +1,8 @@
-package me.staufer.mathmagic;
+package me.staufer.textools;
 
 import android.content.Context;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Javascript Interface for MathView

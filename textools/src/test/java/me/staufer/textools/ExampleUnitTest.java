@@ -1,4 +1,4 @@
-package me.staufer.mathmagic;
+package me.staufer.textools;
 
 import org.junit.Test;
 

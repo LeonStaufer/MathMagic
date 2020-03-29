@@ -6,11 +6,11 @@ version = "1.0.1"
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'mathmagic'
+    bintrayName = 'textools'
 
     groupId = 'me.staufer'
-    libraryName = 'mathmagic'
-    artifact = 'mathmagic'
+    libraryName = 'textools'
+    artifact = 'textools'
 
     libraryDescription = 'Android Library to display LaTeX equations'
 
