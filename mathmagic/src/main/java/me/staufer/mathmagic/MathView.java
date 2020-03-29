@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Map;
 
 /**
  * MathView class that can render TeX using KaTeX in WebView
@@ -24,9 +25,9 @@ public class MathView extends WebView {
     private String tex;
 
     /**
-     * constructor for creating a MathView
+     * constructor for creating a MathView from XML
      *
-     * @param context Context of View
+     * @param context Context of view
      * @param attrs   AttributeSet
      */
     public MathView(Context context, AttributeSet attrs) {
@@ -36,6 +37,25 @@ public class MathView extends WebView {
         loadAttributes(context, attrs);
 
         //intialize the WebView
+        initialize(context);
+
+        //load the correct page
+        if (tex != null) {
+            loadWithTeX();
+        } else load();
+    }
+
+    /**
+     * constructor for creating MathView programmatically
+     *
+     * @param context Context of view
+     * @param options Map of options
+     */
+    public MathView(Context context, Map options) {
+        super(context);
+
+        loadOptions(options);
+
         initialize(context);
 
         //load the correct page
@@ -107,6 +127,24 @@ public class MathView extends WebView {
         }
     }
 
+    private void loadOptions(Map options) {
+        this.options = new JSONObject();
+
+        try {
+            this.options.put("color", String.format("#%06X", (0xFFFFFF & getOrDefault(options, "color", Color.BLACK))));
+            this.options.put("background", String.format("#%06X", (0xFFFFFF & getOrDefault(options, "backgroundColor", Color.WHITE))));
+            this.options.put("errorColor", String.format("#%06X", (0xFFFFFF & getOrDefault(options, "colorError", Color.rgb(204, 0, 0)))));
+            this.options.put("displayMode", getOrDefault(options, "displayMode", false));
+            this.options.put("fleqn", getOrDefault(options, "fleqn", false));
+            this.options.put("leqno", getOrDefault(options, "leqno", false));
+            this.options.put("throwOnError", getOrDefault(options, "throwOnError", false));
+
+            tex = getOrDefault(options, "tex", null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * render a TeX string in the MathView
      *
@@ -118,5 +156,9 @@ public class MathView extends WebView {
         tex = StringEscapeUtils.escapeEcmaScript(tex);
         //call JS update function with tex
         this.loadUrl("javascript:update('" + tex + "')");
+    }
+
+    private static <T> T getOrDefault(Map map, String key, T def) {
+        return map.containsKey(key) ? (T) map.get(key) : def;
     }
 }
