@@ -69,6 +69,7 @@ public class MathView extends WebView {
 
     /**
      * initialization of the MathView
+     *
      * @param context
      */
     @SuppressLint("SetJavaScriptEnabled")
@@ -83,7 +84,7 @@ public class MathView extends WebView {
         webSettings.setGeolocationEnabled(false);
 
         //set up a WebViewClient to listen for when the page finishes loading
-        this.setWebViewClient(new WebViewClient(){
+        this.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
@@ -98,6 +99,9 @@ public class MathView extends WebView {
         this.addJavascriptInterface(new MathViewInterface(context), "MathViewInterface");
     }
 
+    /**
+     * load the HTML file with KaTeX.js
+     */
     private void load() {
         //default URI
         URI uri = URI.create("file:///android_asset/index.html");
@@ -112,6 +116,9 @@ public class MathView extends WebView {
         this.loadUrl(uri.toString());
     }
 
+    /**
+     * load the HTML with KaTeX.js and initialize it with TeX
+     */
     private void loadWithTeX() {
         //default URI
         URI uri = URI.create("file:///android_asset/index.html");
@@ -126,6 +133,12 @@ public class MathView extends WebView {
         this.loadUrl(uri.toString());
     }
 
+    /**
+     * load the attributes from the XML component and add them to the JSON options object
+     *
+     * @param context Context of View
+     * @param attrs   AttributeSet that contains the attributes from XML
+     */
     private void loadAttributes(Context context, AttributeSet attrs) {
         options = new JSONObject();
 
@@ -151,6 +164,11 @@ public class MathView extends WebView {
         }
     }
 
+    /**
+     * load the attributes from the Map and add them to the JSON options object
+     *
+     * @param options Map that contains options
+     */
     private void loadOptions(Map options) {
         this.options = new JSONObject();
 
@@ -188,6 +206,15 @@ public class MathView extends WebView {
         this.loadUrl("javascript:update('" + tex + "')");
     }
 
+    /**
+     * helper method that returns the map value at the key or a default value
+     *
+     * @param map Map
+     * @param key key String of the map
+     * @param def default value
+     * @param <T>
+     * @return value at key in the map or default
+     */
     private static <T> T getOrDefault(Map map, String key, T def) {
         return map.containsKey(key) ? (T) map.get(key) : def;
     }
