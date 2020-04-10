@@ -42,18 +42,6 @@ public class MathView extends WebView {
         //intialize the WebView
         initialize(context);
 
-        //set up a WebViewClient to listen for when the page finishes loading
-        this.setWebViewClient(new WebViewClient(){
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-
-                loaded = true;
-                //render tex if it was set in the meantime
-                if (buffer != null) render(buffer);
-            }
-        });
-
         //load the correct page
         if (tex != null) {
             loadWithTeX();
@@ -79,11 +67,32 @@ public class MathView extends WebView {
         } else load();
     }
 
+    /**
+     * initialization of the MathView
+     * @param context
+     */
     @SuppressLint("SetJavaScriptEnabled")
     private void initialize(Context context) {
         //enable JavaScript
         WebSettings webSettings = this.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webSettings.setDatabaseEnabled(false);
+        webSettings.setSupportZoom(false);
+        webSettings.setDisplayZoomControls(false);
+        webSettings.setGeolocationEnabled(false);
+
+        //set up a WebViewClient to listen for when the page finishes loading
+        this.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+                loaded = true;
+                //render tex if it was set in the meantime
+                if (buffer != null) render(buffer);
+            }
+        });
 
         //connect MathViewInterface to MathView
         this.addJavascriptInterface(new MathViewInterface(context), "MathViewInterface");
