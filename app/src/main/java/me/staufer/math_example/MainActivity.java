@@ -22,16 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         //get MathView component
         final MathView mathView = findViewById(R.id.mathview);
-        mathView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-
-                //render TeX once MathView has loaded
-                //backslashes need to be escaped
-                mathView.render("x \\times x = x^2 \\\\ \\text{Example in Java}");
-            }
-        });
+        //render TeX, backslashes need to be escaped
+        mathView.render("x \\times x = x^2 \\\\ \\text{Example in Java}");
 
         //get components for interactive MathView
         final MathView mathViewInteractive = findViewById(R.id.mathview_interactive);
