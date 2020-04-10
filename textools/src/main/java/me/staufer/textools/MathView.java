@@ -8,6 +8,7 @@ import android.text.Html;
 import android.util.AttributeSet;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import org.apache.commons.text.StringEscapeUtils;
 import org.json.JSONException;
@@ -23,6 +24,8 @@ import java.util.Map;
 public class MathView extends WebView {
     private JSONObject options;
     private String tex;
+    private String buffer;
+    private boolean loaded = false;
 
     /**
      * constructor for creating a MathView from XML
@@ -38,6 +41,18 @@ public class MathView extends WebView {
 
         //intialize the WebView
         initialize(context);
+
+        //set up a WebViewClient to listen for when the page finishes loading
+        this.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+                loaded = true;
+                //render tex if it was set in the meantime
+                if (buffer != null) render(buffer);
+            }
+        });
 
         //load the correct page
         if (tex != null) {
@@ -151,6 +166,12 @@ public class MathView extends WebView {
      * @param tex string using the TeX format
      */
     public void render(String tex) {
+        //add TeX to buffer if the MathView has not loaded yet
+        if (!loaded) {
+            this.buffer = tex;
+            return;
+        }
+
         //sanitize input
         tex = Html.escapeHtml(tex);
         tex = StringEscapeUtils.escapeEcmaScript(tex);
