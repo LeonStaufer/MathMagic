@@ -9,5 +9,6 @@
         <attr name="color" format="color" />
         <attr name="colorBackground" format="color" />
         <attr name="tex" format="string" />
+        <attr name="fontSize" format="integer" />
     </declare-styleable>
 </resources>

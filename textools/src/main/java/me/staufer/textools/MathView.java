@@ -74,7 +74,7 @@ public class MathView extends WebView {
      */
     @SuppressLint("SetJavaScriptEnabled")
     private void initialize(Context context) {
-        //enable JavaScript
+        //set settings for WebView
         WebSettings webSettings = this.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
@@ -82,6 +82,13 @@ public class MathView extends WebView {
         webSettings.setSupportZoom(false);
         webSettings.setDisplayZoomControls(false);
         webSettings.setGeolocationEnabled(false);
+
+        //set fontSize
+        try {
+            webSettings.setDefaultFontSize(options.getInt("fontSize"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         //set up a WebViewClient to listen for when the page finishes loading
         this.setWebViewClient(new WebViewClient() {
@@ -155,6 +162,7 @@ public class MathView extends WebView {
             options.put("fleqn", styledAttributes.getBoolean(R.styleable.MathView_fleqn, false));
             options.put("leqno", styledAttributes.getBoolean(R.styleable.MathView_leqno, false));
             options.put("throwOnError", styledAttributes.getBoolean(R.styleable.MathView_throwOnError, false));
+            options.put("fontSize", styledAttributes.getInt(R.styleable.MathView_fontSize, 16));
 
             tex = styledAttributes.getString(R.styleable.MathView_tex);
         } catch (JSONException e) {
@@ -180,6 +188,7 @@ public class MathView extends WebView {
             this.options.put("fleqn", getOrDefault(options, "fleqn", false));
             this.options.put("leqno", getOrDefault(options, "leqno", false));
             this.options.put("throwOnError", getOrDefault(options, "throwOnError", false));
+            this.options.put("fontSize", getOrDefault(options, "fontSize", 16));
 
             tex = getOrDefault(options, "tex", null);
         } catch (JSONException e) {
