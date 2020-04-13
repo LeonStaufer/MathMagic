@@ -4,7 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.0.3] - 2020-03-27
+
+### Added
+
+- HTML meta tags to `index.html`
+- TeX Buffer to `MathView` so that `render()` can be called immediately
+- option to change font size
+
+### Changed
+
+- lowered minimum SDK version to 17
+- restricted WebView settings
+- encoding of TeX to base 64
 
 ## [1.0.2] - 2020-03-29
 
@@ -39,6 +51,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/), and t
 - `build.gradle` and `publish.gradle` files to manage publishing to Bintray
 
 [unreleased]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.2...HEAD
+[1.0.3]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/LeonStaufer/TeXTools/releases/tag/v1.0.0
