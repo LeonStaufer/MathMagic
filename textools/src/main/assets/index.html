@@ -53,9 +53,7 @@
 	 * @param html string that should be decoded
 	 */
 	function _decodeHtml(html) {
-		let text = document.createElement("textarea");
-		text.innerHTML = html;
-		return text.value;
+		return atob(html);
 	}
 
 	/**

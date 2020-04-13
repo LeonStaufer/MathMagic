@@ -4,13 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.text.Html;
 import android.util.AttributeSet;
+import android.util.Base64;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import org.apache.commons.text.StringEscapeUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -131,7 +130,7 @@ public class MathView extends WebView {
         URI uri = URI.create("file:///android_asset/index.html");
         try {
             //URI with options and TeX
-            uri = new URI("file", null, "///android_asset/index.html", "options=" + options.toString() + "&tex=" + tex, null);
+            uri = new URI("file", null, "///android_asset/index.html", "options=" + options.toString() + "&tex=" + encodeTeX(tex), null);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -209,8 +208,8 @@ public class MathView extends WebView {
         }
 
         //sanitize input
-        tex = Html.escapeHtml(tex);
-        tex = StringEscapeUtils.escapeEcmaScript(tex);
+        tex = encodeTeX(tex);
+
         //call JS update function with tex
         this.loadUrl("javascript:update('" + tex + "')");
     }
@@ -226,5 +225,15 @@ public class MathView extends WebView {
      */
     private static <T> T getOrDefault(Map map, String key, T def) {
         return map.containsKey(key) ? (T) map.get(key) : def;
+    }
+
+    /**
+     * helper method that sanitizes the TeX input by Base64 encoding it
+     *
+     * @param tex to be Base64 encoded
+     * @return sanitized String in Base64
+     */
+    private static String encodeTeX(String tex){
+        return Base64.encodeToString(tex.getBytes(), Base64.URL_SAFE);
     }
 }
