@@ -46,23 +46,23 @@ This project provides an efficient wrapper for a WebView that renders TeX equati
 
 #### Maven
 
-Add the dependency to your Maven build settings:
+Add the dependency to your Maven build settings and replace `VERSION` with the latest version:
 
 ```xml
 <dependency>
   <groupId>me.staufer</groupId>
   <artifactId>textools</artifactId>
-  <version>1.0.2</version>
+  <version>VERSION</version>
   <type>pom</type>
 </dependency>
 ```
 
 #### Gradle
 
-Add the following the depedency section in your build.gradle:
+Add the following the depedency section in your `build.gradle` and replace `VERSION` with the latest version:
 
 ```groovy
-implementation 'me.staufer:textools:1.0.2'
+implementation 'me.staufer:textools:VERSION'
 ```
 
 ### Usage
