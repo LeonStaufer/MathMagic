@@ -119,6 +119,7 @@ You can change the following properties of the MathView.
 | `color`        | The color of the TeX rendered in the MathView. | `Color` | `black` |
 | `colorBackground` | The background color of the MathView. | `Color` | `white` |
 | `colorError`   | A color that determines the color that unsupported commands and invalid LaTeX are rendered in when `throwOnError` is set to `false`. | `Color` | `#c00`  |
+| `fontSize`   | The font size of the rendered TeX string. | `Integer` | `16`  |
 
 > Descriptions are partially quoted from the [KaTeX Docs][katex-docs].
 
