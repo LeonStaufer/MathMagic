@@ -1,8 +1,10 @@
 package me.staufer.math_example;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 mathViewInteractive.render(s.toString());
             }
+        });
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, PerformanceActivity.class);
+            MainActivity.this.startActivity(myIntent);
         });
     }
 }
