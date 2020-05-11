@@ -3,8 +3,6 @@ package me.staufer.math_example;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;

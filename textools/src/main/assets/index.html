@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MathView</title>
-    <meta name="viewport" content= "width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="file:///android_asset/katex/katex.min.css"/>
     <style type="text/css">
         document {
@@ -41,7 +41,7 @@
 <script>
 	//get options from URL parameters
 	const urlParams = new URLSearchParams(window.location.search);
-	const options = JSON.parse(decodeURIComponent(urlParams.get("options")));
+	let options = JSON.parse(decodeURIComponent(urlParams.get("options")));
 	const tex = urlParams.has("tex") ? decodeURIComponent(urlParams.get("tex")) : null;
 
 	//define body/math elements
@@ -49,12 +49,28 @@
 	const math = document.querySelector("#math");
 
 	/**
-	 * helper function that decodes html string using textarea hack
+	 * helper function that decodes html string
 	 * @param html string that should be decoded
 	 */
 	function _decodeHtml(html) {
-		return atob(html);
+	    //replace URL safe base 64 characters
+	    html = html.replace(/_/g, '/').replace(/-/g, '+');
+
+	    //base 64 decode unicode string
+	    html = decodeUnicode(html);
+
+	    return html;
 	}
+
+    /**
+	 * helper function that decodes a base64 unicode string
+	 * @param str string that should be decoded
+	 */
+	function decodeUnicode(str) {
+	    return decodeURIComponent(atob(str).split('').map(function (c) {
+	        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+    }
 
 	/**
 	 * initialize styles based on options
@@ -64,7 +80,26 @@
 			if (options.displayMode) math.classList.add("display");
 			if (options.color) body.style.color = options.color;
 			if (options.background) body.style.background = options.background;
+		} else {
+		    options = {};
 		}
+
+		options.strict = function (errorCode, errorMsg, token) {
+		    switch (errorCode) {
+                case "mathVsTextUnits":
+                case "commentAtEnd":
+                case "newLineInDisplayMode":
+                    MathViewInterface.warn(errorCode, errorMsg);
+                    break;
+                case "unknownSymbol":
+                case "unicodeTextInMathMode":
+                    break;
+                default:
+                    MathViewInterface.warn("unknownError", errorCode);
+		    }
+
+		    return false;
+		};
 	}
 
 	/**
