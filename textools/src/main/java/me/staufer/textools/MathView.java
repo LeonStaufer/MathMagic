@@ -220,7 +220,7 @@ public class MathView extends WebView {
      * @param map Map
      * @param key key String of the map
      * @param def default value
-     * @param <T>
+     * @param <T> type of return value
      * @return value at key in the map or default
      */
     private static <T> T getOrDefault(Map map, String key, T def) {
@@ -233,7 +233,7 @@ public class MathView extends WebView {
      * @param tex to be Base64 encoded
      * @return sanitized String in Base64
      */
-    private static String encodeTeX(String tex){
+    private static String encodeTeX(String tex) {
         return Base64.encodeToString(tex.getBytes(), Base64.URL_SAFE);
     }
 }
