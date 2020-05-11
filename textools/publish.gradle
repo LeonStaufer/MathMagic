@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/LeonStaufer/TeXTools'
     gitUrl = 'https://github.com/LeonStaufer/TeXTools.git'
 
-    libraryVersion = '1.0.3'
+    libraryVersion = '1.0.4'
 
     developerId = 'LeonStaufer'
     developerName = 'Leon Staufer'

@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.4] - 2020-03-27
+
+### Added
+
+- new performance activity to showcase how efficiently it renders with 100 MathViews
+
+### Changed
+
+- base64 decoding in `index.html` to correctly handle all unicode characters
+
 ## [1.0.3] - 2020-03-27
 
 ### Added
@@ -50,7 +60,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/), and t
 - Example to show how MathView can be used
 - `build.gradle` and `publish.gradle` files to manage publishing to Bintray
 
-[unreleased]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.2...HEAD
+[unreleased]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/LeonStaufer/TeXTools/compare/v1.0.0...v1.0.1
